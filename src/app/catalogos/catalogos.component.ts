@@ -38,6 +38,12 @@ export class CatalogosComponent implements OnInit {
     })
   }
 
+  delete(id: number): void {
+    this.cs.delete(id).subscribe(() => {
+      this.getAll();
+    })
+  }
+
   clean(): void {
     this.formulario.setValue({
       "tipo": null,

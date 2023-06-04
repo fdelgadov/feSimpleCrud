@@ -29,7 +29,9 @@
                     <tr *ngFor="let catalogo of catalogos">
                         <td>{{catalogo.tipo}}</td>
                         <td>{{catalogo.valor}}</td>
-                        <td></td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" (click)="delete(catalogo.id)">Eliminar</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
