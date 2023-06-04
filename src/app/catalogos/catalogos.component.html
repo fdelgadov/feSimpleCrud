@@ -1,1 +1,26 @@
-<p>catalogos works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col md-4">
+            <h3>Formulario</h3>
+        </div>
+        <div class="col-md-8">
+            <h3>Catalogos</h3>
+            <table class="table table-hover mt-5">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Valor</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let catalogo of catalogos">
+                        <td>{{catalogo.tipo}}</td>
+                        <td>{{catalogo.valor}}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
