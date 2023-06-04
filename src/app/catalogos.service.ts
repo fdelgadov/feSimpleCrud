@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class CatalogosService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
   ) {}
 
   getAll(){
