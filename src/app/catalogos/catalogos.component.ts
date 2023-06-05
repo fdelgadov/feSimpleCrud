@@ -39,9 +39,17 @@ export class CatalogosComponent implements OnInit {
   }
 
   delete(id: number): void {
-    this.cs.delete(id).subscribe(() => {
-      this.getAll();
-    })
+    const ok = confirm("¿Seguro que desea eliminar este catálogo?");
+    if (ok) {
+      this.cs.delete(id).subscribe(() => {
+        this.getAll();
+      })
+    }
+  }
+
+  update(): void {
+
+    
   }
 
   clean(): void {
