@@ -18,8 +18,8 @@ export class CatalogosService {
     return this.http.post("http://localhost:8080/catalogo", catalogo)
   }
 
-  update(catalogo: any){
-    return this.http.post("http://localhost:8080/catalogo", catalogo)
+  update(id: number, catalogo: any){
+    return this.http.post("http://localhost:8080/catalogo/" + id, catalogo)
   }
 
   delete(id: number){

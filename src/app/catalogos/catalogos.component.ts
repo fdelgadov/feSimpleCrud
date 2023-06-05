@@ -13,6 +13,7 @@ export class CatalogosComponent implements OnInit {
     tipo: [],
     valor: []
   })
+  editTemp: any
   constructor(
     private cs: CatalogosService,
     private fb: FormBuilder
@@ -32,10 +33,18 @@ export class CatalogosComponent implements OnInit {
   save(): void{
     const v = this.formulario.value;
     console.log('values', v);
-    this.cs.create(v).subscribe(() => {
-      this.getAll();
-      this.clean();
-    })
+    console.log("temp", this.editTemp);
+    let request;
+    if(!this.editTemp){
+      request = this.cs.create(v);
+    }
+    else{
+      request = this.cs.update(this.editTemp.id, v);
+    }
+    request.subscribe(() => {
+        this.getAll();
+        this.clean();
+      })
   }
 
   delete(id: number): void {
@@ -47,9 +56,12 @@ export class CatalogosComponent implements OnInit {
     }
   }
 
-  update(): void {
-
-    
+  edit(c: any): void {
+    this.editTemp = c;
+    this.formulario.setValue({
+      "tipo": c.tipo,
+      "valor": c.valor
+    });
   }
 
   clean(): void {
@@ -57,5 +69,6 @@ export class CatalogosComponent implements OnInit {
       "tipo": null,
       "valor": null
     })
+    this.editTemp = null;
   }
 }

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col md-4">
-            <h3>Formulario</h3>
+            <h3>{{ editTemp ? 'Editar': 'Crear' }} catálogo</h3>
             <form class="mt-5" [formGroup]="formulario" (ngSubmit)="save()" autocomplete="off">
                 <div class="mb-2">
                     <label for="tipo">Tipo</label>
@@ -11,8 +11,9 @@
                     <label for="valor">Valor</label>
                     <input id="valor" type="number" placeholder="Valor" class="form-control" formControlName="valor">
                 </div>
-                <div class="text-end"></div>
-                <button class="btn btn-primary">Guardar</button>
+                <div class="text-end">
+                    <button class="btn btn-primary">Guardar</button>
+                </div>
             </form>
         </div>
         <div class="col-md-8">
@@ -30,7 +31,10 @@
                         <td>{{catalogo.tipo}}</td>
                         <td>{{catalogo.valor}}</td>
                         <td>
-                            <button class="btn btn-danger btn-sm" (click)="delete(catalogo.id)">Eliminar</button>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary" (click)="edit(catalogo)">Editar</button>
+                                <button class="btn btn-danger" (click)="delete(catalogo.id)">Eliminar</button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
